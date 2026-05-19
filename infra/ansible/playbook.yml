@@ -24,25 +24,25 @@
 
 
 
-    - name: Remove conflicting Docker packages
-      apt:
-        name:
-          - docker.io
-          - docker-compose-plugin
-          - containerd
-          - runc
-        state: absent
-        purge: yes
-      ignore_errors: yes
+#    - name: Remove conflicting Docker packages
+#      apt:
+#        name:
+#          - docker.io
+#          - docker-compose-plugin
+#          - containerd
+#          - runc
+#        state: absent
+#        purge: yes
+#      ignore_errors: yes
 
-    - name: Remove old Docker data
-      file:
-        path: "{{ item }}"
-        state: absent
-      loop:
-        - /var/lib/docker
-        - /var/lib/containerd
-      ignore_errors: yes
+#    - name: Remove old Docker data
+#      file:
+#        path: "{{ item }}"
+#        state: absent
+#      loop:
+#        - /var/lib/docker
+#        - /var/lib/containerd
+#      ignore_errors: yes
 
 
 

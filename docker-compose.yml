@@ -1,0 +1,20 @@
+services:
+  app:
+    build: .
+    container_name: perf_eval_app
+    restart: unless-stopped
+    env_file:
+      - .env
+    expose:
+      - "8501"
+
+  nginx:
+    image: nginx:alpine
+    container_name: perf_eval_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app

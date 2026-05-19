@@ -1,0 +1,24 @@
+cd /mnt/d/DevOps_Project/ai-performance-evaluator/ai-performance-evaluator
+cat > .gitignore << 'EOF'
+# Secrets - never commit these
+infra/ansible/vars.yml
+infra/terraform/terraform.tfvars
+*.pem
+.env
+
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+
+# Python
+__pycache__/
+*.pyc
+venv/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
+EOF

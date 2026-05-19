@@ -131,22 +131,25 @@
         seconds: 15
 
     - name: Run DB schema migration
-      shell: >
-        docker compose exec -T app python -c "
-        import os
+      shell: |
+        docker compose exec -T app python <<'EOF'
         from app.core.db import get_engine
         from sqlalchemy import text
+
         engine = get_engine()
+
         with open('db/schema.sql') as f:
             sql = f.read()
+
         with engine.connect() as conn:
             for stmt in sql.split(';'):
                 stmt = stmt.strip()
                 if stmt:
                     conn.execute(text(stmt))
             conn.commit()
-        print('Schema applied')
-        "
+
+        print("Schema applied")
+        EOF
       args:
         chdir: /home/ubuntu/ai-performance-evaluator
       become_user: ubuntu

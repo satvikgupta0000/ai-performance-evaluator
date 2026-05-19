@@ -1,7 +1,7 @@
 import streamlit as st
-from app.core.auth import login, set_session, get_session, logout
-from app.views import employee_view, manager_view, hr_view
-from app.scheduler import start_scheduler
+from core.auth import login, set_session, get_session, logout
+from views import employee_view, manager_view, hr_view
+from scheduler import start_scheduler
 
 st.set_page_config(
     page_title="Performance Evaluation System",
